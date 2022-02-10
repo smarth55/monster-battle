@@ -4,11 +4,7 @@ import { take, map, switchMap } from 'rxjs/operators';
 
 import { SettingsService } from '../settings/settings.service';
 
-// import {sightWords} from '../sight-words';
-
 const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-// const SpeechGrammarList = (window as any).SpeechGrammarList || (window as any).webkitSpeechGrammarList;
-// const SpeechRecognitionEvent = (window as any).SpeechRecognitionEvent || (window as any).webkitSpeechRecognitionEvent;
 
 @Injectable({
   providedIn: 'root'
@@ -21,19 +17,7 @@ export class WebSpeechService {
     private ngZone: NgZone,
     private settings: SettingsService
   ) {
-    // speechSynthesis.getVoices(); // just to kick start the voices array
-        // fromEvent(speechSynthesis, 'voiceschanged')
-    //   .pipe(take(1))
-    //   .subscribe(() => {
-    //     this.voices = speechSynthesis.getVoices();
-    //   });
-
-    // const grammar = '#JSGF V1.0; grammar letters; public <letter> = ' + letters.join(' | ') + ' ;';
-    // const speechRecognitionList = new SpeechGrammarList();
-    // speechRecognitionList.addFromString(grammar, 1);
-
     this.recognition = new SpeechRecognition();
-    // this.recognition.grammars = speechRecognitionList;
     this.recognition.continuous = true;
     this.recognition.lang = 'en-US';
     this.recognition.interimResults = false;
@@ -65,7 +49,7 @@ export class WebSpeechService {
   getVoices() {
     const voices = speechSynthesis.getVoices();
     if (voices?.length) {
-      return of(voices).pipe(take(1));
+      return of(voices);
     } else {
       return fromEvent(speechSynthesis, 'voiceschanged')
         .pipe(
