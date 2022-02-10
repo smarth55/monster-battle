@@ -1,0 +1,52 @@
+<div class="battle-layout">
+  <div class="align-center">
+    <app-health-bar [percent]="playerHealth"></app-health-bar>
+    <div>{{ player.name }}</div>
+  </div>
+  <div class="timer justify-center">&infin;</div>
+  <div class="align-center">
+    <app-health-bar class="flip" [percent]="computerHealth"></app-health-bar>
+    <div class="text-align-end">{{ computer.name }}</div>
+  </div>
+  <app-monster-player
+    #playerMonster
+    class="justify-center"
+    [monster]="player"
+  ></app-monster-player>
+  <div class="current-word">
+    <p *ngIf="pregameText" class="pregame">{{ pregameText }}</p>
+    {{ currentWord }}
+    <div *ngIf="gameOver" class="gameover">
+      <span>You {{ playerHealth <= 0 ? 'Lost' : 'Win!' }}</span>
+      <button mat-flat-button color="accent" (click)="startGame()">Play Again?</button>
+    </div>
+  </div>
+  <app-monster-player
+    #computerMonster
+    class="flip justify-center"
+    [monster]="computer"
+  ></app-monster-player>
+  <div class="align-center justify-center">
+    <button
+      *ngIf="misses >= 3"
+      mat-flat-button
+      color="accent"
+      (click)="hearWord()"
+    >
+      Hear It
+    </button>
+  </div>
+  <div class="justify-center align-center">
+    <button mat-flat-button color="primary" (click)="quitGame()">Quit</button>
+  </div>
+  <div class="align-center justify-center">
+    <button
+      *ngIf="misses >= 3"
+      mat-flat-button
+      color="accent"
+      (click)="skipWord()"
+    >
+      Skip
+    </button>
+  </div>
+</div>

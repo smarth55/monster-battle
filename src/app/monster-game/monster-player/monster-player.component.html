@@ -1,0 +1,5 @@
+<img
+  class="monster-image {{ animationState }}"
+  [src]="'assets/images/' + monster.id + '_'+ ((animationState === 'attack') ? '2' : '1' ) + '.png'"
+  (animationend)="onAnimationDone()"
+>

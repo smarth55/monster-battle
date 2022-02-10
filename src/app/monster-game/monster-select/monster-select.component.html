@@ -1,0 +1,14 @@
+<div class="select-layout">
+  <div
+    *ngFor="let monster of monsters"
+    class="monster-thumbnail"
+    [class.selected]="selectedMonster === monster"
+    (click)="selectMonster(monster)"
+  >
+    <img [src]="'assets/images/' + monster.id + '_1.png'">
+  </div>
+  <div class="selected-monster">
+    <app-monster-player [monster]="selectedMonster"></app-monster-player>
+    <button mat-flat-button color="primary" (click)="confirmSelected()">Select Monster</button>
+  </div>
+</div>

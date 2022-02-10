@@ -1,0 +1,23 @@
+.monster-image {
+  max-height: 300px;
+
+  &.idle {
+    animation: idle 3s infinite;
+  }
+
+  &.attack {
+    animation: attack 2s 1;
+    transform: translateX(10%) rotate(20deg);
+  }
+}
+
+@keyframes idle {
+  0%, 100% {transform: translateX(0)}
+  33% {transform: translateX(10%) rotateZ(10deg)}
+  66% {transform: translateX(5%) rotateZ(-10deg)}
+}
+
+@keyframes attack {
+  0%, 50%, 100% {filter: brightness(0.5) drop-shadow(2px 4px 6px black)}
+  25%, 75% {filter: brightness(1.2) drop-shadow(5px 10px 0px black)}
+}

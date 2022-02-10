@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Settings</h2>
+<mat-dialog-content>
+  <div class="settings-form" [formGroup]="settingsForm">
+    <div class="settings-group">
+      <h3>Word Groups</h3>
+      <p><mat-checkbox formControlName="preKindergarten">Pre-K</mat-checkbox></p>
+      <p><mat-checkbox formControlName="kindergarten">Kindergarten</mat-checkbox></p>
+      <p><mat-checkbox formControlName="firstGrade">First Grade</mat-checkbox></p>
+      <p><mat-checkbox formControlName="secondGrade">Second Grade</mat-checkbox></p>
+      <p><mat-checkbox formControlName="thirdGrade">Third Grade</mat-checkbox></p>
+      <p><mat-checkbox formControlName="nouns">Nouns</mat-checkbox></p>
+    </div>
+    <div class="settings-group">
+      <h3>Voices</h3>
+      <mat-form-field>
+        <mat-label>Select Playback Voice</mat-label>
+        <mat-select formControlName="voice">
+          <mat-option *ngFor="let voice of voices$ | async" [value]="voice.name">{{voice.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</mat-dialog-content>
+<div mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close()">Cancel</button>
+  <button mat-button color="accent" (click)="saveSettings()">Save</button>
+</div>

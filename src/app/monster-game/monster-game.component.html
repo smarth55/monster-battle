@@ -1,0 +1,9 @@
+<app-monster-select
+  *ngIf="!selectedMonster"
+  (select)="onSelectMonster($event)"
+></app-monster-select>
+<app-monster-battle
+  *ngIf="selectedMonster"
+  [player]="selectedMonster"
+  (quit)="onQuitGame()"
+></app-monster-battle>

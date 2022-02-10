@@ -1,0 +1,2 @@
+<app-start-screen *ngIf="!playing" (startGame)="onStartGame()"></app-start-screen>
+<app-monster-game *ngIf="playing" (quitGame)="onQuitGame()"></app-monster-game>

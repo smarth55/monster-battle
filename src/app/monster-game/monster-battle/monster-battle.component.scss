@@ -1,0 +1,61 @@
+:host {
+  display: flex;
+  justify-content: center;
+  background-image: url('/assets/images/bg_1.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.pregame {
+  margin: 0;
+  font-size: 2em;
+  font-family: 'Butcherman', cursive;
+}
+
+.flip {
+  transform: rotateY(180deg);
+}
+
+.battle-layout {
+  display: grid;
+  grid-template-columns: 40% 20% 40%;
+  grid-template-rows: 1fr 5fr 1fr;
+  width: 90%;
+  margin: 3em;
+}
+
+.align-center {
+  align-self: center;
+}
+
+.justify-center {
+  justify-self: center;
+}
+
+.text-align-end {
+  text-align: end;
+}
+
+.timer {
+  font-size: 3em;
+  align-self: baseline;
+}
+
+.current-word {
+  align-self: center;
+  justify-self: center;
+  font-size: 4em;
+  z-index: 5;
+  background-color: #ffffff99;
+  box-shadow: 0px 0px 10px 10px #ffffff99;
+  padding: 15px;
+  border-radius: 50px;
+}
+
+.gameover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  line-height: 1em;
+}
